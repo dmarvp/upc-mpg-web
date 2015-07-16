@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150716021724) do
+ActiveRecord::Schema.define(version: 20150716023252) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 20150716021724) do
 
   create_table "ntransactions", force: :cascade do |t|
     t.datetime "datetransaction"
-    t.integer  "transactiontype", limit: 4
     t.decimal  "amount",                        precision: 10
     t.text     "description",     limit: 65535
     t.integer  "category_id",     limit: 4

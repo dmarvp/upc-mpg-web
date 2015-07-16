@@ -60,19 +60,6 @@ ActiveRecord::Schema.define(version: 20150714034800) do
   add_index "recurrent_transactions", ["customer_id"], name: "index_recurrent_transactions_on_customer_id", using: :btree
   add_index "recurrent_transactions", ["period_id"], name: "index_recurrent_transactions_on_period_id", using: :btree
 
-  create_table "transactions", force: :cascade do |t|
-    t.date     "datetransaction"
-    t.decimal  "amount",                        precision: 10
-    t.text     "description",     limit: 65535
-    t.integer  "category_id",     limit: 4
-    t.integer  "customer_id",     limit: 4
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
-  end
-
-  add_index "transactions", ["category_id"], name: "index_transactions_on_category_id", using: :btree
-  add_index "transactions", ["customer_id"], name: "index_transactions_on_customer_id", using: :btree
-
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
     t.string   "encrypted_password",     limit: 255, default: "", null: false
@@ -95,6 +82,4 @@ ActiveRecord::Schema.define(version: 20150714034800) do
   add_foreign_key "ntransactions", "customers"
   add_foreign_key "recurrent_transactions", "customers"
   add_foreign_key "recurrent_transactions", "periods"
-  add_foreign_key "transactions", "categories"
-  add_foreign_key "transactions", "customers"
 end

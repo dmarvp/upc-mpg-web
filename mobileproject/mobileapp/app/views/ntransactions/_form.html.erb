@@ -1,0 +1,18 @@
+<%= simple_form_for @ntransaction, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :datetransaction %>
+  <%= error_span(@ntransaction[:datetransaction]) %>
+  <%= f.input :transactiontype %>
+  <%= error_span(@ntransaction[:transactiontype]) %>
+  <%= f.input :amount %>
+  <%= error_span(@ntransaction[:amount]) %>
+  <%= f.input :description %>
+  <%= error_span(@ntransaction[:description]) %>
+  <%= f.input :category_id %>
+  <%= error_span(@ntransaction[:category_id]) %>
+  <%= f.input :customer_id %>
+  <%= error_span(@ntransaction[:customer_id]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                ntransactions_path, :class => 'btn btn-default' %>
+<% end %>

@@ -1,0 +1,44 @@
+<%- model_class = RecurrentTransaction -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:startdate) %></th>
+      <th><%= model_class.human_attribute_name(:enddate) %></th>
+      <th><%= model_class.human_attribute_name(:period_id) %></th>
+      <th><%= model_class.human_attribute_name(:nextdate) %></th>
+      <th><%= model_class.human_attribute_name(:customer_id) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @recurrent_transactions.each do |recurrent_transaction| %>
+      <tr>
+        <td><%= link_to recurrent_transaction.id, recurrent_transaction_path(recurrent_transaction) %></td>
+        <td><%= recurrent_transaction.startdate %></td>
+        <td><%= recurrent_transaction.enddate %></td>
+        <td><%= recurrent_transaction.period_id %></td>
+        <td><%= recurrent_transaction.nextdate %></td>
+        <td><%= recurrent_transaction.customer_id %></td>
+        <td><%=l recurrent_transaction.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_recurrent_transaction_path(recurrent_transaction), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      recurrent_transaction_path(recurrent_transaction),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_recurrent_transaction_path,
+            :class => 'btn btn-primary' %>

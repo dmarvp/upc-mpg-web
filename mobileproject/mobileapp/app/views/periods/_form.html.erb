@@ -1,0 +1,10 @@
+<%= simple_form_for @period, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :name %>
+  <%= error_span(@period[:name]) %>
+  <%= f.input :description %>
+  <%= error_span(@period[:description]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                periods_path, :class => 'btn btn-default' %>
+<% end %>

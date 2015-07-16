@@ -1,0 +1,16 @@
+<%= simple_form_for @recurrent_transaction, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :startdate %>
+  <%= error_span(@recurrent_transaction[:startdate]) %>
+  <%= f.input :enddate %>
+  <%= error_span(@recurrent_transaction[:enddate]) %>
+  <%= f.association :period %>
+  <%= error_span(@recurrent_transaction[:period]) %>
+  <%= f.input :nextdate %>
+  <%= error_span(@recurrent_transaction[:nextdate]) %>
+  <%= f.association :customer %>
+  <%= error_span(@recurrent_transaction[:customer]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                recurrent_transactions_path, :class => 'btn btn-default' %>
+<% end %>

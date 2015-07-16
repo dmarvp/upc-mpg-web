@@ -1,0 +1,2 @@
+module NtransactionsHelper
+end

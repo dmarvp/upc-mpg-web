@@ -1,0 +1,46 @@
+<%- model_class = Ntransaction -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:datetransaction) %></th>
+      <th><%= model_class.human_attribute_name(:transactiontype) %></th>
+      <th><%= model_class.human_attribute_name(:amount) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:category_id) %></th>
+      <th><%= model_class.human_attribute_name(:customer_id) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @ntransactions.each do |ntransaction| %>
+      <tr>
+        <td><%= link_to ntransaction.id, ntransaction_path(ntransaction) %></td>
+        <td><%= ntransaction.datetransaction %></td>
+        <td><%= ntransaction.transactiontype %></td>
+        <td><%= ntransaction.amount %></td>
+        <td><%= ntransaction.description %></td>
+        <td><%= ntransaction.category_id %></td>
+        <td><%= ntransaction.customer_id %></td>
+        <td><%=l ntransaction.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_ntransaction_path(ntransaction), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      ntransaction_path(ntransaction),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_ntransaction_path,
+            :class => 'btn btn-primary' %>

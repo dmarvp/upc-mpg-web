@@ -8,6 +8,8 @@
   <dd><%= @period.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
   <dd><%= @period.description %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:numberOfMonths) %>:</strong></dt>
+  <dd><%= @period.numberOfMonths %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150716023252) do
+ActiveRecord::Schema.define(version: 20150717030904) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -40,10 +40,11 @@ ActiveRecord::Schema.define(version: 20150716023252) do
   add_index "ntransactions", ["customer_id"], name: "index_ntransactions_on_customer_id", using: :btree
 
   create_table "periods", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.string   "description", limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "name",           limit: 255
+    t.string   "description",    limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "numberOfMonths", limit: 4
   end
 
   create_table "recurrent_transactions", force: :cascade do |t|
